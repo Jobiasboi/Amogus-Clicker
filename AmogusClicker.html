@@ -1,0 +1,175 @@
+<html>
+<center>
+<body id="body">
+<style>
+#inline{
+    display: inline;
+}
+
+#body {
+  background-color: lightgray;
+  border: 3px solid dimgray;
+  font-family: Comic Sans MS;
+}
+
+button {
+  border: 3px solid black;
+  font-family: Comic Sans MS;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  height: 30%;
+}
+
+button {
+  border: 3px solid black;
+  font-family: Comic Sans MS;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  height: 15%;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotateZ(0deg);
+  }
+
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+#animate1 {
+  background-color: lightgray;
+  border: 3px solid dimgray;
+  font-family: Comic Sans MS;
+  animation: rotation;
+  animation-iteration-count: infinite;
+  animation-duration: 3s;
+}
+
+
+td {
+  background-color: #636363;
+  border: 3px solid black;
+  font-family: Comic Sans MS;
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 4o%;
+  height: 40%;
+}
+
+</style>
+<br>
+
+<button style="width:20%; background-color:lightblue;">Menu</button>
+<button onclick="alert('This is a pretty goofy website but basically this is a clicker game :D. ')"style="width:20%; background-color:lightblue;">About</button>
+<button onclick="alert('Ok so to play you click the spinning amongus guy to gain points and once you get points you can buy upgrades to get more points per click.')" style="width:20%; background-color:lightblue;">How to play</button>
+<button onclick="alert('Current Points:' + score)" style="width:20%; background-color:lightblue;">Stats</button>
+
+<header style="font-size:25px;"><u><b>ඞ Amogus clicker ඞ</b></u></header>
+<div>
+<br>
+  <p id="inline" style="font-size:25px;" ><b>[Points:<span id="amountofpoints">0</span>]</b></p>
+  <br>
+  <p id="inline" ><b>[Per click:<span id="perclickpoints">1</span>] [Per second:<span id="persec">0</span>]</b></p>
+  <br><br>
+</div>
+<img  onclick="oc(1)" id="animate1"  style="width:17.5%; height:25%;" src="https://www.citypng.com/public/uploads/preview/-51616861741r1ctxorh0y.png">
+<br>
+<br>
+
+<button style="width:32.5%; background-color:lightblue;" onclick="pcbuy1(1)">
++1 per click [Cost:<span id="cost1">50</span>]
+</button>
+<button style="width:32.5%; background-color:lightblue;" onclick="psbuy1(1)">
++1 per second [Cost:<span id="cost2">150</span>]
+</button>
+<br><br>
+<button style="width:32.5%; background-color:lightblue;" onclick="pcbuy2(1)">
++5 per click [Cost:<span id="cost3">300</span>]
+</button>
+<button style="width:32.5%; background-color:lightblue;" onclick="psbuy2(1)">
++10 per second [Cost:<span id="cost4">650</span>]
+</button>
+<br><br>
+</body>
+</center>
+<script>
+var perclick = 1;
+var score = 0;
+var p1 = 50;
+var ps = 0;
+var p2 = 150;
+var p3 = 300;
+var p4 = 650;
+var gmulti = 1;
+var totc
+
+function oc(){
+	score = score + perclick * gmulti;
+  document.getElementById("amountofpoints").innerHTML = score;
+}
+
+function pcbuy1(){
+	if (score >= p1){
+  	score = score - p1;
+    perclick = perclick + 1;
+    p1 = Math.round(p1 * 1.25)
+    document.getElementById("perclickpoints").innerHTML = perclick;
+    document.getElementById("amountofpoints").innerHTML = score;
+    document.getElementById("cost1").innerHTML = p1;
+    
+  }
+}
+
+function pcbuy2(){
+	if (score >= p3){
+  	score = score - p3;
+    perclick = perclick + 5;
+    p3 = Math.round(p3 * 1.25)
+    document.getElementById("perclickpoints").innerHTML = perclick;
+    document.getElementById("amountofpoints").innerHTML = score;
+    document.getElementById("cost3").innerHTML = p3;
+    
+  }
+}
+
+function psbuy1(){
+	if (score >= p2) {
+  	score = score - p2;
+    ps = ps + 1;
+    p2 = Math.round(p2 * 1.25)
+    document.getElementById("amountofpoints").innerHTML = score;
+    document.getElementById("cost2").innerHTML = p2;
+    document.getElementById("persec").innerHTML = ps;
+    
+  }
+}
+
+function psbuy2(){
+	if (score >= p4) {
+  	score = score - p4;
+    ps = ps + 10;
+    p4 = Math.round(p4 * 1.25)
+    document.getElementById("amountofpoints").innerHTML = score;
+    document.getElementById("cost4").innerHTML = p4;
+    document.getElementById("persec").innerHTML = ps;
+    
+  }
+}
+
+
+
+setInterval(persecond, 1000);
+
+function persecond(){
+	score = score + ps * gmulti;
+  document.getElementById("amountofpoints").innerHTML = score;
+}
+</script>
+</html>
+
